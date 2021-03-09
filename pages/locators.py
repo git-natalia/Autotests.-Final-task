@@ -1,11 +1,15 @@
 from selenium.webdriver.common.by import By
 
-class MainPageLocators():
+class BasePageLocators():
     LOGIN_LINK = (By.ID, "login_link")
-    
+
 class LoginPageLocators():
     LOGIN_FORM = (By.ID, "login_form")
     REGISTER_FORM = (By.ID, "register_form")
+
+class MainPageLocators():
+    pass
+#    LOGIN_LINK = (By.ID, "login_link")
 
 class ProductPageLocators():
     ADD_TO_BASKET_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")
