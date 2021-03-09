@@ -2,7 +2,11 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators():
     LOGIN_LINK = (By.ID, "login_link")
+    LOOK_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group a.btn.btn-default")
 
+class BasketPageLocators():
+    NO_PRODUCTS_IN_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
+    BASKET_ITEM = (By.CLASS_NAME, "basket-items")
 class LoginPageLocators():
     LOGIN_FORM = (By.ID, "login_form")
     REGISTER_FORM = (By.ID, "register_form")

@@ -10,6 +10,10 @@ class BasePage():
         self.url = url
         #self.browser.implicitly_wait(timeout)
 
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOOK_BASKET_BUTTON)
+        link.click()
+
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
@@ -39,6 +43,9 @@ class BasePage():
 
     def open(self):
         self.browser.get(self.url)
+
+    def should_be_look_basket_button(self):
+        assert self.is_element_present(*BasePageLocators.LOOK_BASKET_BUTTON), "Look basket button is not presented"
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
