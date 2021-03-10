@@ -19,7 +19,6 @@ class LoginPageLocators():
 
 class MainPageLocators():
     pass
-#    LOGIN_LINK = (By.ID, "login_link")
 
 class ProductPageLocators():
     ADD_TO_BASKET_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")

@@ -2,13 +2,13 @@ from pages.base_page import BasePage
 from pages.locators import ProductPageLocators
 
 class ProductPage(BasePage):
-    def should_be_add_product_to_basket_button(self):
-        assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not presented"
-
     def add_product_to_basket(self):
         # добавление в корзину
         add_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_button.click()
+
+    def should_be_add_product_to_basket_button(self):
+        assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not presented"
 
     def should_be_product_in_basket(self):
         self.should_be_product_name()
@@ -17,17 +17,6 @@ class ProductPage(BasePage):
         self.should_be_product_cost()
         self.should_be_basket_cost_in_message()
         self.should_be_basket_cost_in_message_equal_product_cost()
-
-    def should_be_product_name(self):
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), "Product name is not presented"
-
-    def should_be_product_name_in_message(self):
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), "Product name is not presented in message"
-
-    def should_be_product_name_in_message_equal_product_name(self):
-        product_name_in_message = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
-        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        assert product_name_in_message == product_name, "Product name in message is not equal product name"
 
     def should_be_product_cost(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_COST), "Product cost is not presented"
@@ -40,11 +29,20 @@ class ProductPage(BasePage):
         product_cost = self.browser.find_element(*ProductPageLocators.PRODUCT_COST).text
         assert basket_cost_in_message == product_cost, "Basket cost in message is not equal product cost"
 
-    def should_not_be_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is present in error"
+    def should_be_product_name(self):
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), "Product name is not presented"
 
-    def should_not_be_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is present in error"
+    def should_be_product_name_in_message(self):
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), "Product name is not presented in message"
+
+    def should_be_product_name_in_message_equal_product_name(self):
+        product_name_in_message = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
+        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
+        assert product_name_in_message == product_name, "Product name in message is not equal product name"
 
     def should_disappear_success_message(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not disappear"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is present in error"
+
